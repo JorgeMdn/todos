@@ -1,0 +1,75 @@
+<ion-content>
+  <ion-grid>
+    <ion-title class="ion-text-center ion-margin-top">
+      Manejador de tareas
+    </ion-title>
+
+    <form class="ion-padding" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <ion-item size="12" class="br-8 mb-1" color="grey">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <div
+        *ngIf="
+          loginForm.get('email').hasError &&
+          (loginForm.get('email').touched || loginForm.get('email').dirty)
+        "
+      >
+        <div
+          class="inv-feedback"
+          *ngIf="loginForm.get('email').hasError('required')"
+        >
+          El campo es obligatorio.
+        </div>
+        <div
+          class="inv-feedback"
+          *ngIf="loginForm.get('email').hasError('email')"
+        >
+          Debe ser un email válido.
+        </div>
+      </div>
+
+      <ion-item size="12" class="br-8 my-1" color="grey">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input [type]="passwordType" formControlName="password"></ion-input>
+      </ion-item>
+      <div
+        *ngIf="
+          loginForm.get('password').hasError &&
+          (loginForm.get('password').touched || loginForm.get('password').dirty)
+        "
+      >
+        <div
+          class="inv-feedback"
+          *ngIf="loginForm.get('password').hasError('required')"
+        >
+          El campo es obligatorio.
+        </div>
+      </div>
+
+      <ion-item size="12" *ngIf="errorMessage">
+        <ion-col size="12" class="ion-text-center">
+          <div class="inv-feedback">{{ errorMessage }}</div>
+        </ion-col>
+      </ion-item>
+
+      <ion-item size="12">
+        <ion-label>Mostrar contraseña</ion-label>
+        <ion-toggle
+          formControlName="showPassword"
+          (ionChange)="showPasswordToogle()"
+        ></ion-toggle>
+      </ion-item>
+
+      <ion-button
+        expand="block"
+        class="ion-margin-top ion-text-capitalize"
+        color="custom"
+        type="submit"
+        [disabled]="!loginForm.valid"
+      >
+        Iniciar Sesión
+      </ion-button>
+    </form>
+  </ion-grid></ion-content
+>
