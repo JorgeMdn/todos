@@ -1,0 +1,61 @@
+*:focus {
+  outline: none;
+}
+
+.avatar {
+  width: 90px;
+  display: flex;
+  margin: 2rem auto auto auto;
+  border-radius: 50px;
+}
+
+.back-icon {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.br-8 {
+  border-radius: 8px;
+}
+
+.color-blue {
+  color: blue;
+}
+
+.fb {
+  font-weight: bold;
+}
+
+ion-item {
+  --background: transparent !important;
+}
+
+.inv-feedback {
+  width: 100%;
+  margin: 0.25rem 0rem;
+  font-size: 90%;
+  font-weight: bold;
+  color: #ff586b;
+}
+
+.logo {
+  width: 180px;
+  display: flex;
+  margin: 4rem auto auto auto;
+}
+
+.my-1 {
+  margin: 1rem 0rem;
+}
+
+.my-2 {
+  margin: 2rem 0rem;
+}
+
+.package-img {
+  width: 120px;
+}
+
+.swiper-image {
+  width: 100%;
+}
