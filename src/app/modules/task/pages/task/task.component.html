@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <!-- <ion-button (click)="cancel()">
+          <ion-icon slot="icon-only" name="refresh"></ion-icon>
+        </ion-button> -->
+    </ion-buttons>
+
+    <ion-title
+      class="font-primary toolbar-title ion-text-center"
+      *ngIf="action == 'a'"
+    >
+      Crear tarea
+    </ion-title>
+    <ion-title
+      class="font-primary toolbar-title ion-text-center"
+      *ngIf="action == 'e'"
+    >
+      Editar tarea
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-item size="12" class="br-8 mb-1" color="grey">
+      <ion-label position="floating">Title</ion-label>
+      <ion-input type="text" [(ngModel)]="task.title"></ion-input>
+    </ion-item>
+    <ion-item size="12" class="br-8 mb-1" color="grey">
+      <ion-label position="floating">Description</ion-label>
+      <ion-input type="text" [(ngModel)]="task.description"></ion-input>
+    </ion-item>
+    <ion-button
+      expand="block"
+      (click)="save()"
+      [disabled]="task.title == '' || task.description == ''"
+    >
+      Guardar
+    </ion-button>
+  </ion-grid></ion-content
+>
