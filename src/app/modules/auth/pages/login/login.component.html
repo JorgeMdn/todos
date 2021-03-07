@@ -1,7 +1,14 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="font-primary toolbar-title ion-text-center">
+      App de tareas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <ion-grid>
     <ion-title class="ion-text-center ion-margin-top">
-      Manejador de tareas
+      Iniciar Sesión
     </ion-title>
 
     <form class="ion-padding" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -61,13 +68,7 @@
         ></ion-toggle>
       </ion-item>
 
-      <ion-button
-        expand="block"
-        class="ion-margin-top ion-text-capitalize"
-        color="custom"
-        type="submit"
-        [disabled]="!loginForm.valid"
-      >
+      <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">
         Iniciar Sesión
       </ion-button>
     </form>

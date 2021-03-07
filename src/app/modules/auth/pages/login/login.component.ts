@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this._formBouilder.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
       showPassword: [false],
     });
   }
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit {
         this.loginForm.reset();
       },
       (error) => {
-        this.errorMessage = error.error.error ? error.error.error : null;
+        this.errorMessage =
+          'Credenciales incorrectas, intente de nuevo porfavor.';
       }
     );
   };

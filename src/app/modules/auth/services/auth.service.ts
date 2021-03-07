@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { SessionData } from '../data/session-data.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +12,8 @@ export class AuthService {
 
   autenticationState = new BehaviorSubject(false);
 
-  constructor() {
-    this.email = 'jorge';
+  constructor(private zone: NgZone, private router: Router) {
+    this.email = 'jorge@gmail.com';
     this.password = '123';
   }
 
@@ -19,6 +21,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       if (this.email == formData.email && this.password == formData.password) {
         this.authenticate();
+        this.saveSession(formData);
         resolve(true); //retornar datos de la sesion
       } else {
         reject('Credenciales incorrectas, favor de intentar');
@@ -29,6 +32,9 @@ export class AuthService {
   isAuthenticated() {
     return this.autenticationState.value;
   }
+  existSession = () => {
+    return localStorage.getItem('sessionData');
+  };
 
   authenticate() {
     this.autenticationState.next(true);
@@ -37,8 +43,30 @@ export class AuthService {
   unauthenticate() {
     this.autenticationState.next(false);
   }
+  saveSession(sessionData: any) {
+    localStorage.setItem('sessionData', JSON.stringify(sessionData));
+    return true;
+  }
+
+  loadSession() {
+    let sessionData: SessionData = JSON.parse(
+      localStorage.getItem('sessionData')
+    );
+    return sessionData;
+  }
+
+  removeSession() {
+    localStorage.removeItem('sessionData');
+    return true;
+  }
 
   register = () => {};
 
-  logout = () => {};
+  logout = () => {
+    this.unauthenticate();
+    this.removeSession();
+    this.zone.run(() => {
+      this.router.navigate(['/', 'auth']);
+    });
+  };
 }
