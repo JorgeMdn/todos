@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="font-primary toolbar-title ion-text-wrap">
+      Lista de productos disponibles
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="add()">
+        <ion-icon slot="start" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let product of _productsService.list; let i = index">
+    <ion-item>
+      <ion-label class="ion-text-wrap">{{ product.title }}</ion-label>
+    </ion-item>
+    <ion-card-content>
+      <ion-label class="ion-text-wrap"
+        >Cantidad Disponible: {{ product.amount }}</ion-label
+      >
+    </ion-card-content>
+    <ion-card-content>
+      Descripción: {{ product.description }}
+    </ion-card-content>
+    <ion-item>
+      <ion-buttons slot="end">
+        <ion-button (click)="edit(product, i)">
+          <ion-icon name="pencil" color="warning"></ion-icon>
+        </ion-button>
+        <ion-button (click)="delete(product, i)">
+          <ion-icon name="trash" color="danger" slot="end"></ion-icon>
+        </ion-button>
+        <ion-button (click)="_productsService.add(product, i)">
+          <ion-icon name="add-circle" color="success" slot="end"></ion-icon>
+        </ion-button>
+        <ion-button (click)="_productsService.remove(product, i)">
+          <ion-icon name="remove-circle" color="danger" slot="end"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-card>
+</ion-content>

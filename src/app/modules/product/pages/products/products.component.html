@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title
+      class="font-primary toolbar-title ion-text-center"
+      *ngIf="action == 'a'"
+    >
+      Crear Producto
+    </ion-title>
+    <ion-title
+      class="font-primary toolbar-title ion-text-center"
+      *ngIf="action == 'e'"
+    >
+      Editar Producto
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-item size="12" class="br-8 mb-1" color="grey">
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input type="text" [(ngModel)]="product.title"></ion-input>
+    </ion-item>
+    <ion-item size="12" class="br-8 mb-1" color="grey">
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input type="text" [(ngModel)]="product.description"></ion-input>
+    </ion-item>
+    <ion-item size="12" class="br-8 mb-1" color="grey">
+      <ion-label position="floating">Cantidad</ion-label>
+      <ion-input type="number" [(ngModel)]="product.amount"></ion-input>
+    </ion-item>
+    <ion-button
+      expand="block"
+      (click)="save()"
+      color="danger"
+      [disabled]="
+        product.title == '' ||
+        product.description == '' ||
+        product.amount == 0 ||
+        product.amount % 2 != 0
+      "
+    >
+      Guardar
+    </ion-button>
+  </ion-grid></ion-content
+>

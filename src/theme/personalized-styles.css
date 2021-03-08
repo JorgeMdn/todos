@@ -59,3 +59,7 @@ ion-item {
 .swiper-image {
   width: 100%;
 }
+
+ion-icon {
+  font-size: 22px !important;
+}

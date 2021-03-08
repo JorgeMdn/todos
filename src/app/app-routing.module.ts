@@ -15,14 +15,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'tasks',
+    path: 'products',
     loadChildren: () =>
-      import('./modules/task/task.module').then((m) => m.TaskModule),
+      import('./modules/product/product.module').then((m) => m.ProductModule),
     canActivate: [AuthGuard],
   },
   {
     path: '',
-    redirectTo: 'tasks',
+    redirectTo: 'products',
     pathMatch: 'full',
   },
   {

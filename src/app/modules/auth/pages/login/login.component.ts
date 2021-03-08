@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.errorMessage = null;
     this._authService.login(this.loginForm.value).then(
       (data) => {
-        this._router.navigate(['tasks']);
+        this._router.navigate(['products']);
         this.loginForm.reset();
       },
       (error) => {

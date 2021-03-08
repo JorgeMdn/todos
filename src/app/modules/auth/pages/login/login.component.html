@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="danger">
     <ion-title class="font-primary toolbar-title ion-text-center">
-      App de tareas
+      App de lista de productos
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -68,7 +68,12 @@
         ></ion-toggle>
       </ion-item>
 
-      <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">
+      <ion-button
+        expand="block"
+        type="submit"
+        color="danger"
+        [disabled]="!loginForm.valid"
+      >
         Iniciar Sesión
       </ion-button>
     </form>
